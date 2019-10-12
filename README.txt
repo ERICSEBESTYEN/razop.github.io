@@ -1,9 +1,9 @@
 
 TITLE: 
-Architect - 100% Fully Responsive Free HTML5 Bootstrap Template
+Marble - Fully Responsive Free HTML5 template
 
 AUTHOR:
-DESIGNED & DEVELOPED by FreeHTML5.co
+DESIGNED & DEVELOPED by FREEHTML5.co
 
 Website: http://freehtml5.co/
 Twitter: http://twitter.com/fh5co
@@ -36,15 +36,21 @@ https://github.com/scottjehl/Respond/blob/master/LICENSE-MIT
 animate.css
 http://daneden.me/animate
 
-jQuery Waypoint
+jQuery Waypoints
 https://github.com/imakewebthings/waypoints/blog/master/licenses.txt
 
-Flexslider
-http://flexslider.woothemes.com/
-
-Sticky Kit
-http://leafo.net/sticky-kit/
-
 Demo Images:
-http://unsplash.com
+http://pexels.com
+
+Owl Carousel
+http://www.owlcarousel.owlgraphic.com/
+
+Stellar Parallax
+http://markdalgleish.com/projects/stellar.js/
+
+jQuery counTo
+https://github.com/mhuggins/jquery-countTo
+
+Google Map
+https://maps.google.com/
 
