@@ -1,25 +1,30 @@
 {
   "name": "pomf",
-  "version": "1.0.0",
-  "description": "kawaii file host",
-  "homepage": "http://pomf.se/",
+  "version": "2.1.0",
+  "description": "Kawaii file host",
+  "homepage": "https://pantsu.cat/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nokonoko/Pomf.git"
+    "url": "https://github.com/pomf/pomf"
   },
-  "author": "Neku <neku@pomf.se>",
+  "author": "Eliot Whalan <ewhal@pantsu.cat>",
+  "contributors": [
+    "Eric Johansson <neku@pomf.se>",
+    "Peter Lejeck <peter.lejeck@gmail.com>",
+    "cenci0 <alchimist94@gmail.com>",
+    "Juuso Lapinlampi <wub@partyvan.eu>",
+    "Luminarys <postmaster@gensok.io>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nokonoko/Pomf/issues"
+    "url": "https://github.com/pomf/pomf/issues"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-swig": "~0.1.2",
-    "grunt-mkdir": "~0.1.1",
-    "grunt-contrib-uglify": "~0.2.5",
-    "grunt-contrib-htmlmin": "~0.1.3",
-    "grunt-contrib-imagemin": "~0.3.0",
-    "grunt-contrib-cssmin": "~0.6.2",
-    "grunt-contrib-copy": "~0.4.1"
+    "clean-css": "^3.4.18",
+    "uglify-js": "^2.6.2",
+    "swig": "^1.4.2"
+  },
+  "dependencies": {
+    "htmlmin": "0.0.6"
   }
 }
