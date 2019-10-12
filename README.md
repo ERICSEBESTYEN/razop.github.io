@@ -1,4 +1,2 @@
-upload-download-file
-====================
-
-source from http://tutorialweb.net/membuat-web-simple-upload-dan-download-file-dengan-php-mysql/ with little change :D
+# Moved
+Development of Pomf has been moved to [https://github.com/pomf/pomf](https://github.com/pomf/pomf), but the original code will still stay here as well.
