@@ -1,10 +1,4 @@
-# Simple PHP Upload
-This is just a simple PHP page to facilitate the upload and execution of files to a web server.
+upload-download-file
+====================
 
-To give it a whirl:
-```
-git clone https://github.com/Oweoqi/simple-php-upload.git
-cd simple-php-upload
-php -S 127.0.0.1:80
-```
-Then navigate to http://127.0.0.1/upload.php
+source from http://tutorialweb.net/membuat-web-simple-upload-dan-download-file-dengan-php-mysql/ with little change :D
