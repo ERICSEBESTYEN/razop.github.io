@@ -1,183 +1,225 @@
-# Pomf
-[![Build
-Status](https://travis-ci.org/pomf/pomf.svg?branch=master)](https://travis-ci.org/pomf/pomf)
-[![Dependency
-Status](https://david-dm.org/pomf/pomf.svg)](https://david-dm.org/pomf/pomf)
-[![devDependency
-Status](https://david-dm.org/pomf/pomf/dev-status.svg)](https://david-dm.org/pomf/pomf#info=devDependencies)
-[![MIT
-licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/pomf/pomf/master/LICENSE)
-[![Documentation Status](https://readthedocs.org/projects/pomf/badge/?version=latest)](http://pomf.readthedocs.io/en/latest/?badge=latest)
+# jQuery File Upload
 
-Pomf is a simple file uploading and sharing platform.
+## Contents
+
+- [Description](#description)
+- [Demo](#demo)
+- [Features](#features)
+- [Security](#security)
+- [Setup](#setup)
+- [Requirements](#requirements)
+  - [Mandatory requirements](#mandatory-requirements)
+  - [Optional requirements](#optional-requirements)
+  - [Cross-domain requirements](#cross-domain-requirements)
+- [Browsers](#browsers)
+  - [Desktop browsers](#desktop-browsers)
+  - [Mobile browsers](#mobile-browsers)
+  - [Extended browser support information](#extended-browser-support-information)
+- [Testing](#testing)
+- [Support](#support)
+- [License](#license)
+
+## Description
+
+> File Upload widget with multiple file selection, drag&amp;drop support,
+> progress bars, validation and preview images, audio and video for jQuery.  
+> Supports cross-domain, chunked and resumable file uploads and client-side
+> image resizing.  
+> Works with any server-side platform (PHP, Python, Ruby on Rails, Java,
+> Node.js, Go etc.) that supports standard HTML form file uploads.
+
+## Demo
+
+[Demo File Upload](https://blueimp.github.io/jQuery-File-Upload/)
 
 ## Features
 
-- One click uploading, no registration required
-- A minimal, modern web interface
-- Drag & drop supported
-- Upload API with multiple response choices
-  - JSON
-  - HTML
-  - Text
-  - CSV
-- Supports [ShareX](https://getsharex.com/) and other screenshot tools
+- **Multiple file upload:**  
+  Allows to select multiple files at once and upload them simultaneously.
+- **Drag & Drop support:**  
+  Allows to upload files by dragging them from your desktop or file manager and
+  dropping them on your browser window.
+- **Upload progress bar:**  
+  Shows a progress bar indicating the upload progress for individual files and
+  for all uploads combined.
+- **Cancelable uploads:**  
+  Individual file uploads can be canceled to stop the upload progress.
+- **Resumable uploads:**  
+  Aborted uploads can be resumed with browsers supporting the Blob API.
+- **Chunked uploads:**  
+  Large files can be uploaded in smaller chunks with browsers supporting the
+  Blob API.
+- **Client-side image resizing:**  
+  Images can be automatically resized on client-side with browsers supporting
+  the required JS APIs.
+- **Preview images, audio and video:**  
+  A preview of image, audio and video files can be displayed before uploading
+  with browsers supporting the required APIs.
+- **No browser plugins (e.g. Adobe Flash) required:**  
+  The implementation is based on open standards like HTML5 and JavaScript and
+  requires no additional browser plugins.
+- **Graceful fallback for legacy browsers:**  
+  Uploads files via XMLHttpRequests if supported and uses iframes as fallback
+  for legacy browsers.
+- **HTML file upload form fallback:**  
+  Allows progressive enhancement by using a standard HTML file upload form as
+  widget element.
+- **Cross-site file uploads:**  
+  Supports uploading files to a different domain with cross-site XMLHttpRequests
+  or iframe redirects.
+- **Multiple plugin instances:**  
+  Allows to use multiple plugin instances on the same webpage.
+- **Customizable and extensible:**  
+  Provides an API to set individual options and define callback methods for
+  various upload events.
+- **Multipart and file contents stream uploads:**  
+  Files can be uploaded as standard "multipart/form-data" or file contents
+  stream (HTTP PUT file upload).
+- **Compatible with any server-side application platform:**  
+  Works with any server-side platform (PHP, Python, Ruby on Rails, Java,
+  Node.js, Go etc.) that supports standard HTML form file uploads.
 
-### Demo
+## Security
 
-See the real world example at [safe.moe](https://safe.moe/).
+⚠️ Please read the [VULNERABILITIES](VULNERABILITIES.md) document for a list of
+fixed vulnerabilities
+
+Please also read the [SECURITY](SECURITY.md) document for instructions on how to
+securely configure your Webserver for file uploads.
+
+## Setup
+
+jQuery File Upload can be installed via [NPM](https://www.npmjs.com/):
+
+```sh
+npm install blueimp-file-upload
+```
+
+This allows you to include [jquery.fileupload.js](js/jquery.fileupload.js) and
+its extensions via `node_modules`, e.g:
+
+```html
+<script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+```
+
+The widget can then be initialized on a file upload form the following way:
+
+```js
+$('#fileupload').fileupload();
+```
+
+For further information, please refer to the following guides:
+
+- [Main documentation page](https://github.com/blueimp/jQuery-File-Upload/wiki)
+- [List of all available Options](https://github.com/blueimp/jQuery-File-Upload/wiki/Options)
+- [The plugin API](https://github.com/blueimp/jQuery-File-Upload/wiki/API)
+- [How to setup the plugin on your website](https://github.com/blueimp/jQuery-File-Upload/wiki/Setup)
+- [How to use only the basic plugin.](https://github.com/blueimp/jQuery-File-Upload/wiki/Basic-plugin)
 
 ## Requirements
 
-Original development environment is Nginx + PHP5.5 + MySQL, but is confirmed to
-work with Apache 2.4 and newer PHP versions. Should work with any other
-PDO-compatible database.
+### Mandatory requirements
 
-## Install
+- [jQuery](https://jquery.com/) v1.6+
+- [jQuery UI widget factory](https://api.jqueryui.com/jQuery.widget/) v1.9+
+  (included): Required for the basic File Upload plugin, but very lightweight
+  without any other dependencies from the jQuery UI suite.
+- [jQuery Iframe Transport plugin](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/jquery.iframe-transport.js)
+  (included): Required for
+  [browsers without XHR file upload support](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support).
 
-For the purposes of this guide, we won't cover setting up Nginx, PHP, MySQL,
-Node, or NPM. So we'll just assume you already have them all running well.
+### Optional requirements
 
-### Compiling
+- [JavaScript Templates engine](https://github.com/blueimp/JavaScript-Templates)
+  v3+: Used to render the selected and uploaded files for the Basic Plus UI and
+  jQuery UI versions.
+- [JavaScript Load Image library](https://github.com/blueimp/JavaScript-Load-Image)
+  v2+: Required for the image previews and resizing functionality.
+- [JavaScript Canvas to Blob polyfill](https://github.com/blueimp/JavaScript-Canvas-to-Blob)
+  v3+:Required for the image previews and resizing functionality.
+- [blueimp Gallery](https://github.com/blueimp/Gallery) v2+: Used to display the
+  uploaded images in a lightbox.
+- [Bootstrap](https://getbootstrap.com/) v3+: Used for the demo design.
+- [Glyphicons](https://glyphicons.com/) Icon set used by Bootstrap.
 
-First you must get a copy of the pomf code.  To do so, clone this git repo.
-You will need to recursively clone the repo to get the required PHP submodule,
-and the optional user panel submodule.
-```bash
-git clone --recursive https://github.com/pomf/pomf
-```
-If you don't want either of the submodules run the following command,
-```bash
-git clone https://github.com/pomf/pomf
-```
+### Cross-domain requirements
 
-Assuming you already have Node and NPM working, compilation is easy. If you would like any additional submodules, or to exclude the default PHP submodule, use the `MODULES="..."` variable.
+[Cross-domain File Uploads](https://github.com/blueimp/jQuery-File-Upload/wiki/Cross-domain-uploads)
+using the
+[Iframe Transport plugin](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/jquery.iframe-transport.js)
+require a redirect back to the origin server to retrieve the upload results. The
+[example implementation](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/main.js)
+makes use of
+[result.html](https://github.com/blueimp/jQuery-File-Upload/blob/master/cors/result.html)
+as a static redirect page for the origin server.
 
-Run the following commands to do so.
-```bash
-cd pomf/
-make
-# alternatively
-make MODULES="" # compile no submodules; exclude the default php backend module
-make MODULES="php moe" # compile the php and moe submodules
-#
-make install
-```
-OR
-```bash
-make install DESTDIR=/desired/path/for/site
-```
-After this, the pomf site is now compressed and set up inside `dist/`, or, if specified, `DESTDIR`.
+The repository also includes the
+[jQuery XDomainRequest Transport plugin](https://github.com/blueimp/jQuery-File-Upload/blob/master/js/cors/jquery.xdr-transport.js),
+which enables limited cross-domain AJAX requests in Microsoft Internet Explorer
+8 and 9 (IE 10 supports cross-domain XHR requests).  
+The XDomainRequest object allows GET and POST requests only and doesn't support
+file uploads. It is used on the
+[Demo](https://blueimp.github.io/jQuery-File-Upload/) to delete uploaded files
+from the cross-domain demo file upload service.
 
-## Configuring
+## Browsers
 
-Front-end related settings, such as the name of the site, and maximum allowable
-file size, are found in `dist.json`.  Changes made here will
-only take effect after rebuilding the site pages.  This may be done by running
-`make` from the root of the site directory.
+### Desktop browsers
 
-Back-end related settings, such as database configuration, and path for uploaded files, are found in `static/php/includes/settings.inc.php`.  Changes made here take effect immediately.
+The File Upload plugin is regularly tested with the latest browser versions and
+supports the following minimal versions:
 
-If you intend to allow uploading files larger than 2 MB, you may also need to
-increase POST size limits in `php.ini` and webserver configuration. For PHP,
-modify `upload_max_filesize` and `post_max_size` values. The configuration
-option for nginx webserver is `client_max_body_size`.
+- Google Chrome
+- Apple Safari 4.0+
+- Mozilla Firefox 3.0+
+- Opera 11.0+
+- Microsoft Internet Explorer 6.0+
 
-Example nginx configs can be found in confs/.
+### Mobile browsers
 
-## Using SQLite as DB engine
+The File Upload plugin has been tested with and supports the following mobile
+browsers:
 
-We need to create the SQLite database before it may be used by pomf.
-Fortunately, this is incredibly simple.  
+- Apple Safari on iOS 6.0+
+- Google Chrome on iOS 6.0+
+- Google Chrome on Android 4.0+
+- Default Browser on Android 2.3+
+- Opera Mobile 12.0+
 
-First create a directory for the database, e.g. `mkdir /var/db/pomf`.  
-Then, create a new SQLite database from the schema, e.g. `sqlite3 /var/db/pomf/pomf.sq3 -init /home/pomf/sqlite_schema.sql`.
-Then, finally, ensure the permissions are correct, e.g.
-```bash
-chown nginx:nginx /var/db/pomf
-chmod 0750 /var/db/pomf
-chmod 0640 /var/db/pomf/pomf.sq3
-```
+### Extended browser support information
 
-Finally, edit `php/includes/settings.inc.php` to indicate this is the database engine you would like to use.  Make the changes outlined below
-```php
-define('POMF_DB_CONN', '[stuff]'); ---> define('POMF_DB_CONN', 'sqlite:/var/db/pomf/pomf.sq3');
-define('POMF_DB_USER', '[stuff]'); ---> define('POMF_DB_USER', null);
-define('POMF_DB_PASS', '[stuff]'); ---> define('POMF_DB_PASS', null);
-```
+For a detailed overview of the features supported by each browser version and
+known operating system / browser bugs, please have a look at the
+[Extended browser support information](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support).
 
-*NOTE: The directory where the SQLite database is stored, must be writable by the web server user*
+## Testing
 
-### Apache
+The project comes with three sets of tests:
 
-If you are running Apache and want to compress your output when serving files,
-add to your `.htaccess` file:
+1. Code linting using [ESLint](https://eslint.org/).
+2. Unit tests using [Mocha](https://mochajs.org/).
+3. End-to-end tests using [blueimp/wdio](https://github.com/blueimp/wdio).
 
-    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/x-javascript application/json
+To run the tests, follow these steps:
 
-Remember to enable `deflate_module` and `filter_module` modules in your Apache
-configuration file.
+1. Start [Docker](https://docs.docker.com/).
+2. Install development dependencies:
+   ```sh
+   npm install
+   ```
+3. Run the tests:
+   ```sh
+   npm test
+   ```
 
-### Migrating from MySQL to SQLite
- ,
-Compared to SQLite, MySQL is relatively complicated to administer, brings in many unneeded dependencies, and consumes more resources.  Additonally, as a network service, poorly configured installations have the potential
-to pose a security risk.
+## Support
 
-For these reasons, you may wish to use SQLite rather than MySQL.
-
-Fortunately, it is incredibly simple to migrate your database.  This may be done on a live server, if you desire, and requires zero downtime.
-
-The process described below involves running these commands on a live server.  Nothing done here affects your main site, until running the very last command, which is done after verifying there are no issues.  
-
-No changes described here are destructive, and are easily reverted.  They only have the potential to cause uploading to fail gracefully, and will not affect downloading.
-
-Run the following commands as root, to dump your database, and make a SQLite database with the contents.  
-```bash
-mkdir /var/db/pomf
-wget -O /tmp/m2s https://github.com/dumblob/mysql2sqlite/raw/master/mysql2sqlite.sh
-mysqldump -u OLD_DB_USER -p OLD_DB_PASS pomf | sh /tmp/m2s | sqlite3 /var/db/pomf/sq3
-rm /tmp/m2s
-chown -R nginx:nginx /var/db/pomf #replace user as appropriate
-chmod 0750 /var/db/pomf && chmod 0640 /var/db/pomf/sq3
-```
-Edit the file `php/includes/settings.inc.php`, in your **source directory**, making the changes outlined below.  Note, changing the second two lines is optional, as they are simply ignored when using SQLite.
-```php
-define('POMF_DB_CONN', '[stuff]'); ---> define('POMF_DB_CONN', 'sqlite:/var/db/pomf/pomf.sq3');
-define('POMF_DB_USER', '[stuff]'); ---> define('POMF_DB_USER', null);
-define('POMF_DB_PASS', '[stuff]'); ---> define('POMF_DB_PASS', null);
-```
-Then, run `make DESTDIR=/path/to/main_site/testing_dir` (note the *testing_dir* component) to rebuild the website, and copy it into place, in a new testing subdirectory.
-
-Now, navigate to this subdirectory in your web browser, e.g. http://example.com/testing_dir, and verify that uploading works fine.  If so, excellent!  You may rerun `make DESTDIR=/path/to/main_site` to update your main site.
-
-All done! You may disable or uninstall MySQL if you wish.
-
-## Getting help
-
-The Pomf community gathers on IRC. You can also email the maintainer for help.
-
-- IRC (users): `#pomfret` on Rizon (`irc.rizon.net`)
-
-## Contributing
-
-We'd really like if you can take some time to make sure your coding style is
-consistent with the project. Pomf follows [PHP
-PSR-2](http://www.php-fig.org/psr/psr-2/) and [Airbnb JavaScript
-(ES5)](https://github.com/airbnb/javascript/tree/es5-deprecated/es5) (`airbnb/legacy`)
-coding style guides. We use ESLint and PHPCS tools to enforce these standards.
-
-You can also help by sending us feature requests or writing documentation and
-tests.
-
-Thanks!
-
-## Credits
-
-Pomf was created by Eric Johansson and Peter Lejeck for
-[Pomf.se](http://pomf.se/). The software is currently maintained by the
-community.
+This project is actively maintained, but there is no official support channel.  
+If you have a question that another developer might help you with, please post
+to
+[Stack Overflow](https://stackoverflow.com/questions/tagged/blueimp+jquery+file-upload)
+and tag your question with `blueimp jquery file upload`.
 
 ## License
 
-Pomf is free software, and is released under the terms of the Expat license. See
-`LICENSE`.
+Released under the [MIT license](https://opensource.org/licenses/MIT).
