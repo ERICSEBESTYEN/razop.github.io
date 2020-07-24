@@ -1,6 +1,6 @@
 
 
-var radius = 130;
+var radius = 150;
 var autoRotate = true;
 var rotateSpeed = -60;
 var imgWidth = 240; 
